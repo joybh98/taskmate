@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Todolist Manager</title>
+{% endblock title %}
+
+{% block content %}
+      <div class="container">
+        <table class="table table-hover">
+            <!-- loop through queryset-->
+            <th scope="col">Task</th>
+            <th scope="col">Status</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+            {% for obj in all_tasks %}
+                {% if obj.done %}
+                    <tr class="table-success">
+                        <td>{{obj.task}}</td>
+                        <td>{{obj.done}}</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
+                    </tr>
+                {% else %}
+                    <tr class="table-default">
+                        <td>{{obj.task}}</td>
+                        <td>{{obj.done}}</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+
+        </table>
+    </div>
+{% endblock content %}
