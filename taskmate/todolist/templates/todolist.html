@@ -5,50 +5,58 @@
 {% endblock title %}
 
 {% block content %}
-      <div class="container" role="alert">
+      <div class="container">
+        </br>
+
         {% if messages %}
             {% for message in messages %}
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="close" data-dimiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Task added successfully!</strong> Don't forget to complete it!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             {% endfor %}
         {% endif %}
-      </br>
+
         <form method="POST">
             {% csrf_token %}
-            <div class="mb-3">
+            <div class="form-group">
               <input type="text" class="form-control" name="task" placeholder="New Task?">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
-        <table class="table table-hover">
-            <!-- loop through queryset-->
-            <th scope="col">Task</th>
-            <th scope="col">Status</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-            {% if all_tasks %}
-                {% for obj in all_tasks %}
-                    {% if obj.done %}
-                        <tr class="table-success">
-                            <td>{{obj.task}}</td>
-                            <td>{{obj.done}}</td>
-                            <td>Edit</td>
-                            <td>Delete</td>
-                        </tr>
-                    {% else %}
-                        <tr class="table-default">
-                            <td>{{obj.task}}</td>
-                            <td>{{obj.done}}</td>
-                            <td>Edit</td>
-                            <td>Delete</td>
-                        </tr>
+
+          <table class="table table-bordered">
+            <thead class="thread-dark">
+                <tr>
+                    <th scope="col">Task</th>
+                    <th scope="col">Done</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+                <tbody>
+                    {% if all_tasks %}
+                        {% for obj in all_tasks %}
+                            {% if obj.done %}
+                            <!-- show green(success) if task is done-->
+                                <tr class="table-success">
+                                    <td>{{obj.task}}</td>
+                                    <td>Completed</td>
+                                    <td>Edit</td>
+                                    <td>Delete</td>
+                                </tr>
+                            {% else %}
+                            <!-- else show normal if task is not done-->
+                                <tr class="table-default">
+                                    <td>{{obj.task}}</td>
+                                    <td>Not completed</td>
+                                    <td>Edit</td>
+                                    <td>Delete</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
                     {% endif %}
-                {% endfor %}
-            {% endif %}
-        </table>
+                </tbody>
+            </table>
     </div>
 {% endblock content %}
