@@ -17,7 +17,6 @@ def todolist(request):
     else:
         # get all the objects of this class i.e tasks and done status
         all_tasks=TaskList.objects.all
-
         return render(request,'todolist.html',{'all_tasks':all_tasks})
 
 def contact(request):
