@@ -4,6 +4,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from todolist.models import TaskList
 from todolist.forms import TaskForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -13,6 +14,7 @@ def todolist(request):
         form=TaskForm(request.POST or None)
         if form.is_valid():
             form.save()
+        messages.success(request,("New Task Added!"))
         return redirect('todolist')
     else:
         # get all the objects of this class i.e tasks and done status
