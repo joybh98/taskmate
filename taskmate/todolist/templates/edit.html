@@ -12,6 +12,7 @@
             {% csrf_token %}
             <label class="col-lg-2"></label>
               <input type="text" class="form-control col-lg-6" name="task" placeholder="Edit Task:{{ task_object.task }}" value="{{ task_object.task }}">
+              <input type="hidden" name="done" value="{{task_object.done}}">
             <button type="submit" class="btn btn-primary col-lg-2">Update Task</button>
         </form>
       </div>

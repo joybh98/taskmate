@@ -47,7 +47,7 @@ def edit_task(request,task_id):
         # select the task
         task_obj_edit=TaskList.objects.get(pk=task_id)
         # use the instance parameter to use the same task instance that we're using to query the selected task
-        form=TaskForm(request.POST or none,instance=task_obj_edit)
+        form=TaskForm(request.POST or None,instance=task_obj_edit)
         if form.is_valid():
             form.save()
         messages.success(request,("Task Edited!"))
@@ -56,3 +56,17 @@ def edit_task(request,task_id):
         # get all the objects of this class i.e tasks and done status
         task_object=TaskList.objects.get(pk=task_id)
         return render(request,'edit.html',{'task_object':task_object})
+
+def complete_task(request,task_id):
+    task=TaskList.objects.get(pk=task_id)
+    task.done= True
+    task.save()
+
+    return redirect('todolist')
+
+def pending_task(request,task_id):
+    task=TaskList.objects.get(pk=task_id)
+    task.done= False
+    task.save()
+    
+    return redirect('todolist')

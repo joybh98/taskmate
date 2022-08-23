@@ -28,7 +28,7 @@
             <thead class="thread-dark">
                 <tr>
                     <th scope="col">Task</th>
-                    <th scope="col">Done</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -40,7 +40,7 @@
                             <!-- show green(success) if task is done-->
                                 <tr class="table-success">
                                     <td>{{obj.task}} | {{ obj.id }}</td>
-                                    <td>Completed</td>
+                                    <td><a href="{% url 'pending_task' obj.id %}">Mark this pending</a></td>
                                     <td><a href="{% url 'edit_task' obj.id %}">Edit</a></td>
                                     <td><a href="{% url 'delete_task' obj.id %}">Delete</a></td>
                                 </tr>
@@ -48,7 +48,7 @@
                             <!-- else show normal if task is not done-->
                                 <tr class="table-default">
                                     <td>{{obj.task}} | {{ obj.id }}</td>
-                                    <td>Not completed</td>
+                                    <td><a href="{% url 'complete_task' obj.id %}">Mark this completed</a></td>
                                     <td><a href="{% url 'edit_task' obj.id %}">Edit</a></td>
                                     <td><a href="{% url 'delete_task' obj.id %}">Delete</a></td>
                                 </tr>
