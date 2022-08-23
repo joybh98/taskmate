@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from todolist.models import TaskList
 from todolist.forms import TaskForm
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -18,7 +19,14 @@ def todolist(request):
         return redirect('todolist')
     else:
         # get all the objects of this class i.e tasks and done status
-        all_tasks=TaskList.objects.all
+        all_tasks=TaskList.objects.all()
+        #paginator logic
+        #1. create paginator after each 5 objects
+        paginator=Paginator(all_tasks, 5)
+        # get pages to populate URL
+        page=request.GET.get('pg')
+        # get our tasks 
+        all_tasks=paginator.get_page(page)
         return render(request,'todolist.html',{'all_tasks':all_tasks})
 
 def contact(request):
