@@ -32,3 +32,27 @@ def about(request):
         'welcome_text':"About Us",
         }
     return render(request,'about.html',context)
+
+def delete_task(request,task_id):
+    # connect to db i.e select task
+    task=TaskList.objects.get(pk=task_id)
+    # delete selected task
+    task.delete()
+    # return todolist page
+    return redirect('todolist')
+
+def edit_task(request,task_id):
+    # if post request, post user input to database
+    if request.method == "POST":
+        # select the task
+        task_obj_edit=TaskList.objects.get(pk=task_id)
+        # use the instance parameter to use the same task instance that we're using to query the selected task
+        form=TaskForm(request.POST or none,instance=task_obj_edit)
+        if form.is_valid():
+            form.save()
+        messages.success(request,("Task Edited!"))
+        return redirect('todolist')
+    else:
+        # get all the objects of this class i.e tasks and done status
+        task_object=TaskList.objects.get(pk=task_id)
+        return render(request,'edit.html',{'task_object':task_object})
