@@ -57,26 +57,27 @@
                     {% endif %}
                 </tbody>
             </table>
-            <nav aria-label="pagination_tasks">
+              <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                  <li class="page-itme">
-                    <a class="page-link" href="?pg=1"><<
-                  </li>
                   <li class="page-item">
                     {% if all_tasks.has_previous %}
-                        <a class="page-link" href="?pg={{ all_tasks.previous_page_number }}">{{ all_tasks.previous_page_number }}</a>
+                    <a class="page-link" href="?pg={{all_tasks.previous_page_number }}" aria-label="Previous">
+                      <span aria-hidden="true">&laquo; {{ all_tasks.previous_page_number }}</span>
+                    </a>
                     {% endif %}
-                  </li>                  
-                  <li class="page-item">
-                    <a class="page-link" href="?pg={{ all_tasks.number }}">{{ all_tasks.number }}</a>
                   </li>
+                  <li class="page-item"><a class="page-link" href="?pg={{ all_tasks.number }}">{{ all_tasks.number}}</a></li>
                   <li class="page-item">
                     {% if all_tasks.has_next %}
-                    <a class="page-link" href="?pg={{ all_tasks.next_page_number }}">{{ all_tasks.next_page_number }}</a>
+                    <a class="page-link" href="?pg={{ all_tasks.next_page_number }}" aria-label="Next">
+                      <span aria-hidden="true">{{ all_tasks.next_page_number }}</span>
+                    </a>
                     {% endif %}
                   </li>
                   <li class="page-item">
-                    <a class="page-link" href="?pg={{ all_tasks.paginator.num_pages  }}">>></a>
+                    <a class="page-link" href="?pg={{ all_tasks.paginator.num_pages }}" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
                   </li>
                 </ul>
               </nav>
