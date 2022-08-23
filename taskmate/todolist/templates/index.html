@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Taskmate</title>
+{% endblock title %}
+
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <img src="{% static 'images/1.jpg' %}" alt="" width="360" height="250">
+            </div>
+            <div class="col-lg-4">
+                <img src="{% static 'images/2.jpg' %}" alt="" width="360" height="250">
+            </div>
+            <div class="col-lg-4">
+                <img src="{% static 'images/3.jpg' %}" alt="" width="360" height="250">
+            </div>
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-md-10 offset-md-1">
+                <center><p>Quick and easy to use,anytime,anywhere!</p></center>
+                <center><p>Plan your day better, get your life together</p></center>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
