@@ -25,7 +25,7 @@
             </div>
           </div>
         {% if user.is_authenticated %}
-          <button type="button" class="btn btn-primary">Logged In as {{ user }}</button>
+          <button type="button" class="btn btn-primary">{{ user }}</button>
         {% else %}
         <button type="button" class="btn btn-primary">Logged Out</button>
         {% endif %}
