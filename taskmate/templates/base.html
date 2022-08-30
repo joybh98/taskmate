@@ -23,6 +23,11 @@
                 <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
             </div>
           </div>
+        {% if user.is_authenticated %}
+        <button type="button" class="btn btn-info">Logged In as {{ user }}</button>
+        {% else %}
+        <button type="button" class="btn btn-info">Logged Out</button>
+        {% endif %}
       </nav>
       {% block content %}
       {% endblock content %}
