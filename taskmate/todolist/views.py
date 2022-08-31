@@ -35,12 +35,6 @@ def todolist(request):
         all_tasks=paginator.get_page(page)
         return render(request,'todolist.html',{'all_tasks':all_tasks})
 
-def contact(request):
-    context={
-        'welcome_text':"Contact Page",
-        }
-    return render(request,'contact.html',context)
-
 def about(request):
     context={
         'welcome_text':"About Us",
