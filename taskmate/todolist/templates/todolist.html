@@ -15,14 +15,17 @@
                 </div>
             {% endfor %}
         {% endif %}
-
-        <form method="POST" class="row">
-            {% csrf_token %}
-            <label class="col-lg-4">Your tasks for today!</label>
-              <input type="text" class="form-control col-lg-6" name="task" placeholder="New Task?">
-            <button type="submit" class="btn btn-primary col-lg-2">Submit</button>
-        </form>
-        </br>
+        <div class="row">
+          <form method="POST" class="row">
+            <div class="form-group">
+              {% csrf_token %}
+              <label class="col-lg-4">Your tasks for today!</label>
+                <input type="text" class="form-control col-lg-6" name="task" placeholder="New Task?">
+              <button type="submit" class="btn btn-primary col-lg-2">Submit</button>
+            </  div>
+          </form>
+        </div>
+        <div class="row">
           <table class="table table-bordered text-center">
             <thead class="thread-dark">
                 <tr>
@@ -56,6 +59,8 @@
                     {% endif %}
                 </tbody>
             </table>
+          </div>
+          <div class="row">
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
                   <li class="page-item">
@@ -80,5 +85,6 @@
                   </li>
                 </ul>
               </nav>
+            </div>
     </div>
 {% endblock content %}
