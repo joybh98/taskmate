@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_on_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,8 +27,7 @@ SECRET_KEY = 'django-insecure-$#gw5f6(f=fe7$w=3mo9b(2_+pv9rga9js_od&#_1(3ly&y#n^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['example-taskmate.herokuapp.com']
 
 # Application definition
 
@@ -77,13 +77,25 @@ WSGI_APPLICATION = 'taskmate.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+'''
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd2v5b4ve7mmqbb',
+        'USER': 'lawxekcyvpthdi',
+        'PASSWORD': 'd5f2944f3e979ec37df1a593734c8ed3ef44b3620b2aa2349f3b51be4f156125',
+        'HOST': 'ec2-54-159-175-38.compute-1.amazonaws.com',
+        'PORT': '5432'
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -132,3 +144,5 @@ CRISPY_TEMPLATE_PACK='bootstrap4'
 LOGIN_REDIRECT_URL="todolist"
 
 LOGIN_URL="login"
+
+django_on_heroku.settings(locals())
