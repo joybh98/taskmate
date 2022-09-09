@@ -86,24 +86,13 @@ DATABASES = {
 }
 '''
 
-'''DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'd2v5b4ve7mmqbb',
         'USER': 'lawxekcyvpthdi',
         'PASSWORD': 'd5f2944f3e979ec37df1a593734c8ed3ef44b3620b2aa2349f3b51be4f156125',
         'HOST': 'ec2-54-159-175-38.compute-1.amazonaws.com',
-        'PORT': '5432'
-    }
-}'''
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'taskmate',
-        'USER': 'joy',
-        'PASSWORD': 'lolwut8769',
-        'HOST': 'localhost',
         'PORT': '5432'
     }
 }
